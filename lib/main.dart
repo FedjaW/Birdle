@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:birdle/game.dart';
+import 'package:flutter/semantics.dart';
 
 void main() {
   runApp(const MainApp());
@@ -69,9 +70,14 @@ class GuessInput extends StatelessWidget {
   }
 }
 
-class GamePage extends StatelessWidget {
-  GamePage({super.key});
+class GamePage extends StatefulWidget {
+  const GamePage({super.key});
 
+  @override
+  State<GamePage> createState() => _GamePageState();
+}
+
+class _GamePageState extends State<GamePage> {
   final Game _game = Game();
 
   @override
@@ -90,7 +96,9 @@ class GamePage extends StatelessWidget {
             ),
           GuessInput(
             onSubmitGuess: (String guess) {
-              print(guess);
+              setState(() {
+                _game.guess(guess);
+              });
             },
           ),
         ],
