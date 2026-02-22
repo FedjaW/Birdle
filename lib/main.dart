@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:birdle/game.dart';
-import 'package:flutter/semantics.dart';
 
 void main() {
   runApp(const MainApp());
